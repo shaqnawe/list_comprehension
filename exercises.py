@@ -35,35 +35,34 @@ def sort_by_last(fn_list):
         # add each name to last_name_sorted list and join names separating them with a space in-between
         last_name_sorted.append(' '.join(last))
     return last_name_sorted
-print(sort_by_last(authors))
+# print(sort_by_last(authors))
 
 # Question 3
 # Convert the list below from Celsius to Farhenheit, using the map function with a lambda...
 places = [('Nassau', 32), ('Boston', 12), ('Los Angeles', 44), ('Miami', 29)]
-f_temp = []
 # Created a function to convert from Celsius to Farenheit
 def convert():
-    for i in places:
-        # change temp from Celsius to Farenheit for second element of each item in the list
-        new_temp = i[1]*(9/5)+32
-        # Add the each city and new temp to new tuple
-        f_temp.append((i[0],new_temp))
-    return f_temp
-# create new list and run lamdba function on each tuple
-new_temps = list(map(lambda places:places,convert()))
-print(new_temps)
+    # change temp from Celsius to Farenheit for second element of each item
+    new_temps = lambda data: (data[0], data[1]*(9/5)+32)
+    return new_temps
+# create new list and execute a map function
+print(list(map(convert(),places)))
 
 # Question 4
 # Write a recursive function that returns the fibonacci sequence up to the number passed in.
-
+fibonacci_cache = {}
 def fibonacci(num):
     # Base case to check for 0 and 1
-    if num in [0,1]:
-        # print(num)
-        return num
+    if num == 1:
+        return 1
+    elif num == 2:
+        return 2
     else:
-        print(num)
-        # return the sum of num-1 and num-2 recursively
-        return fibonacci(num-1) + fibonacci(num-2)
+        # return the sum of num-1 and num-2 and save to value
+        value = fibonacci(num-1) + fibonacci(num-2)
+        # Save the value in fibonacci_cache dictionary for future reference
+        # Prevents the program from computing the same numbers
+        fibonacci_cache[num] = value
+        return value
 
-print(fibonacci(10))
+# print(fibonacci(9))
