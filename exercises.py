@@ -51,6 +51,9 @@ print(list(map(convert(),places)))
 # Write a recursive function that returns the fibonacci sequence up to the number passed in.
 fibonacci_cache = {}
 def fibonacci(num):
+    # Check for value in fibonacci cache and return it
+    if num in fibonacci_cache:
+        return fibonacci_cache[num]
     # Base case to check for 0 and 1
     if num == 1:
         return 1
