@@ -1,7 +1,6 @@
 # Question 1
 # Filter out all of the empty strings from the list below
 places = [' ', 'Argentina', '  ', 'San Diego', '', '   ', '', 'Boston', 'New York']
-
 def remove_empty(places):
     for place in places:
         # Iterate each item and check if length > 0
@@ -14,8 +13,8 @@ def remove_empty(places):
 new_list = list(filter(remove_empty,places))
 print(new_list)
 # filter out all empty strings and strings composed of only spaces but using filter and lambda
-new_list = list(filter(lambda place: len(place) != 0 and not place.isspace(), places))
-print(new_list)
+new_list1 = list(filter(lambda place: len(place) != 0 and not place.isspace(), places))
+print(new_list1)
 
 # Question 2
 # Write an anonymous function that sorts this list by the last name...
@@ -31,11 +30,11 @@ def sort_by_last(fn_list):
     last_name_sorted = []
     # iterate through each name in full_names and sort based on last name index[-1]
     # lower case so it doesn't throw off the last name starting with lower case chars
-    for last in sorted(full_names, key=lambda x:x[-1].lower()):
+    for last in sorted(full_names, key=lambda name:name[-1].lower()):
         # add each name to last_name_sorted list and join names separating them with a space in-between
         last_name_sorted.append(' '.join(last))
     return last_name_sorted
-# print(sort_by_last(authors))
+print(sort_by_last(authors))
 
 # Question 3
 # Convert the list below from Celsius to Farhenheit, using the map function with a lambda...
@@ -65,4 +64,4 @@ def fibonacci(num):
         fibonacci_cache[num] = value
         return value
 
-# print(fibonacci(9))
+print(fibonacci(9))
